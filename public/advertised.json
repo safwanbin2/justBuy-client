@@ -1,0 +1,63 @@
+[
+    {
+        "_id": 1,
+        "title": "iPhone 11",
+        "category": "iphone",
+        "sellPrice": 1200,
+        "buyPrice": 2000,
+        "img": "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/Apple_iphone_14_Pro_iPhone_14_Pro_Max_concept_renderings_drdNBC.jpg",
+        "location": "dhaka, Bangladesh",
+        "used": "1year",
+        "postDate": "24/11/2022",
+        "sellerName": "Monu mia",
+        "isVerified": true,
+        "condition": "excellent",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis at, quis repellendus ab iure sed. Qui soluta non quas consequatur earum quae cum obcaecati, optio magnam dignissimos eveniet. Nam nostrum, enim quaerat laudantium aliquam soluta dolorem vitae unde libero perspiciatis!"
+    },
+    {
+        "_id": 1,
+        "title": "iPhone 11",
+        "category": "iphone",
+        "sellPrice": 1200,
+        "buyPrice": 2000,
+        "img": "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/Apple_iphone_14_Pro_iPhone_14_Pro_Max_concept_renderings_drdNBC.jpg",
+        "location": "dhaka, Bangladesh",
+        "used": "1year",
+        "postDate": "24/11/2022",
+        "sellerName": "Monu mia",
+        "isVerified": true,
+        "condition": "excellent",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis at, quis repellendus ab iure sed. Qui soluta non quas consequatur earum quae cum obcaecati, optio magnam dignissimos eveniet. Nam nostrum, enim quaerat laudantium aliquam soluta dolorem vitae unde libero perspiciatis!"
+    },
+    {
+        "_id": 1,
+        "title": "iPhone 11",
+        "category": "iphone",
+        "sellPrice": 1200,
+        "buyPrice": 2000,
+        "img": "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/Apple_iphone_14_Pro_iPhone_14_Pro_Max_concept_renderings_drdNBC.jpg",
+        "location": "dhaka, Bangladesh",
+        "used": "1year",
+        "postDate": "24/11/2022",
+        "sellerName": "Monu mia",
+        "isVerified": true,
+        "condition": "excellent",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis at, quis repellendus ab iure sed. Qui soluta non quas consequatur earum quae cum obcaecati, optio magnam dignissimos eveniet. Nam nostrum, enim quaerat laudantium aliquam soluta dolorem vitae unde libero perspiciatis!"
+    },
+    {
+        "_id": 1,
+        "title": "iPhone 11",
+        "category": "iphone",
+        "sellPrice": 1200,
+        "buyPrice": 2000,
+        "img": "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/Apple_iphone_14_Pro_iPhone_14_Pro_Max_concept_renderings_drdNBC.jpg",
+        "location": "dhaka, Bangladesh",
+        "used": "1year",
+        "postDate": "24/11/2022",
+        "sellerName": "Monu mia",
+        "isVerified": true,
+        "condition": "excellent",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis at, quis repellendus ab iure sed. Qui soluta non quas consequatur earum quae cum obcaecati, optio magnam dignissimos eveniet. Nam nostrum, enim quaerat laudantium aliquam soluta dolorem vitae unde libero perspiciatis!"
+    }
+
+]
