@@ -1,0 +1,30 @@
+[
+    {
+        "_id": 1,
+        "category": "iphone"
+    },
+    {
+        "_id": 2,
+        "category": "samsung"
+    },
+    {
+        "_id": 3,
+        "category": "oppo"
+    },
+    {
+        "_id": 4,
+        "category": "vivo"
+    },
+    {
+        "_id": 5,
+        "category": "redmi"
+    },
+    {
+        "_id": 6,
+        "category": "oneplus"
+    },
+    {
+        "_id": 7,
+        "category": "sony"
+    }
+]
