@@ -4,9 +4,9 @@ import SingleCategory from './SingleCategory';
 
 const Categories = () => {
     const { data: categories = [] } = useQuery({
-        queryKey: ['Categories.json'],
+        queryKey: ['categories'],
         queryFn: async () => {
-            const res = await fetch('Categories.json')
+            const res = await fetch('http://localhost:5000/categories')
             const data = await res.json()
             return data;
         }
@@ -15,8 +15,8 @@ const Categories = () => {
         <div className='my-10'>
             <h2 className='text-2xl font-semibold'>Categories: </h2>
             <div className='my-10 grid grid-cols-5 gap-5'>
-                {categories.map(category => <SingleCategory
-                    key={category._id}
+                {categories.map((category, i) => <SingleCategory
+                    key={i}
                     category={category}
                 ></SingleCategory>)}
             </div>
