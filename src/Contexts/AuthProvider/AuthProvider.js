@@ -17,26 +17,26 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    const update = (name, img) => {
+    const update = (name) => {
         setLoading(true);
-        updateProfile(auth.currentUser, {
+        return updateProfile(auth.currentUser, {
             displayName: name
         })
     }
 
     const logIn = (email, password) => {
         setLoading(true);
-        signInWithEmailAndPassword(auth, email, password);
+        return signInWithEmailAndPassword(auth, email, password);
     }
 
     const logInWithGoogle = () => {
         setLoading(true);
-        signInWithPopup(auth, googleProvider);
+        return signInWithPopup(auth, googleProvider);
     }
 
     const logOut = () => {
         setLoading(true);
-        signOut(auth);
+        return signOut(auth);
     }
 
     useEffect(() => {
