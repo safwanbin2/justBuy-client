@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const AddProducts = () => {
@@ -8,6 +9,8 @@ const AddProducts = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const d = new Date();
     const postDate = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`
+    const navigate = useNavigate();
+
     const handleAddPhone = data => {
         const image = data.img[0];
         const formData = new FormData();
@@ -46,6 +49,7 @@ const AddProducts = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
+                        navigate('/dashboard/myproducts')
                         toast.success('Added successfully')
                     })
             })
@@ -161,10 +165,10 @@ const AddProducts = () => {
                     </label>
                     <input {...register('description', {
                         required: 'can not be empty'
-                    })} type="text" placeholder="selling price" className="input input-bordered input-primary w-full" />
+                    })} type="text" placeholder="Description" className="input input-bordered input-primary w-full" />
                     {errors.description && <p className='text-red-600'><small>{errors.description.message}</small></p>}
                 </div>
-                <input type="submit" className='btn btn-primary' value="Submit" />
+                <input type="submit" className='btn btn-primary my-4' value="Submit" />
             </form>
         </div>
     );
