@@ -1,27 +1,47 @@
 import React from 'react';
-import Footer from '../Pages/Shared/Footer';
+import { Link, Outlet } from 'react-router-dom';
 import Navbar from '../Pages/Shared/Navbar';
 
 const DashboardLayout = () => {
+    const buyerMenu = <>
+        <li><Link to='myorders'>My Orders</Link></li>
+    </>
+
+    const sellerMenu = <>
+        <li><Link>My Products</Link></li>
+        <li><Link>Add a Product</Link></li>
+        <li><Link>My Buyers</Link></li>
+    </>
+
+    const adminMenu = <>
+        <li><Link>All Sellers</Link></li>
+        <li><Link>All Buyers</Link></li>
+        <li><Link>Reported Items</Link></li>
+    </>
     return (
         <div>
             <Navbar></Navbar>
-            {/* drawer */}
-            <div className="drawer">
-                <input id="dashboard" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content">
-                    {/* <!-- Page content here --> */}
-                    <label htmlFor="dashboard" className="btn btn-primary drawer-button">Open drawer</label>
+            <div className="drawer drawer-mobile">
+                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+                <div className="drawer-content flex flex-col items-center justify-center">
+                    <Outlet></Outlet>
                 </div>
                 <div className="drawer-side">
-                    <label htmlFor="dashboard" className="drawer-overlay"></label>
+                    <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
-                        <li><a>Sidebar Item 1</a></li>
-                        <li><a>Sidebar Item 2</a></li>
+                        {
+                            buyerMenu
+                        }
+                        {
+                            sellerMenu
+                        }
+                        {
+                            adminMenu
+                        }
                     </ul>
+
                 </div>
             </div>
-            <Footer></Footer>
         </div>
     );
 };

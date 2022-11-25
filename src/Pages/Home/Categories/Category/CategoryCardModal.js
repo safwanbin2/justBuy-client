@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../../Contexts/AuthProvider/AuthProvider';
 
-const CategoryCardModal = ({ phone,setBookingPhone }) => {
+const CategoryCardModal = ({ phone, setBookingPhone }) => {
     const { title, sellPrice, category, sellerEmail, img } = phone;
     const { user } = useContext(AuthContext);
 
@@ -18,7 +18,8 @@ const CategoryCardModal = ({ phone,setBookingPhone }) => {
             img,
             category,
             buyerPhone,
-            buyerLocation
+            buyerLocation,
+            buyerEmail: user.email
         }
 
         fetch('http://localhost:5000/bookings', {
