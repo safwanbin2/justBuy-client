@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const AddProducts = () => {
     const { user } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const d = new Date();
-    const date = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`
-    console.log(date)
+    const postDate = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`
     const handleAddPhone = data => {
         const image = data.img[0];
         const formData = new FormData();
@@ -28,11 +28,12 @@ const AddProducts = () => {
                     location: data.location,
                     condition: data.condition,
                     used: data.used,
-                    postdate: date,
+                    postdate: postDate,
                     sellerName: user.displayName,
                     sellerEmail: user.email,
                     // isVerified: true,
-                    description: data.description
+                    description: data.description,
+                    status: 'available'
                 }
 
                 fetch(`http://localhost:5000/phones`, {
@@ -45,6 +46,7 @@ const AddProducts = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
+                        toast.success('Added successfully')
                     })
             })
     }
