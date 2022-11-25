@@ -14,6 +14,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                getJWTtoken(user.email);
                 toast.success('Logged in successfully')
                 navigate('/')
             })
@@ -27,12 +28,25 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                getJWTtoken(user.email)
                 toast.success('Logged in successfully')
                 navigate('/')
             })
             .catch(error => {
                 console.error(error)
             })
+    }
+
+    // get jwt token
+    const getJWTtoken = email => {
+        if (email) {
+            fetch(`http://localhost:5000/jwt?email=${email}`)
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data.token)
+                    localStorage.setItem('justbuy-token', data.token)
+                })
+        }
     }
 
     return (
