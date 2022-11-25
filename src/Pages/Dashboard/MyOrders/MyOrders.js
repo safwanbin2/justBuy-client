@@ -17,7 +17,7 @@ const MyOrders = () => {
         return <Loader></Loader>
     }
     return (
-        <div className='w-full mt-[-250px]'>
+        <div className='w-full'>
             <h2 className='my-4'>My orders:</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">

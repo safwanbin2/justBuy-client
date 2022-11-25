@@ -54,20 +54,6 @@ const AddProducts = () => {
                     })
             })
     }
-
-    // title
-    // category
-    // sellPrice
-    // buyPrice
-    // img
-    // location
-    // used
-    // postDate
-    // sellerName
-    // sellerEmail
-    // isVerified
-    // condition
-    // description
     return (
         <div>
             Add new Item:
