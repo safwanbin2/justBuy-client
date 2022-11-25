@@ -4,12 +4,12 @@ import Navbar from '../Pages/Shared/Navbar';
 
 const DashboardLayout = () => {
     const buyerMenu = <>
-        <li><Link to='myorders'>My Orders</Link></li>
+        <li><Link to='/dashboard/myorders'>My Orders</Link></li>
     </>
 
     const sellerMenu = <>
         <li><Link>My Products</Link></li>
-        <li><Link>Add a Product</Link></li>
+        <li><Link to='/dashboard/addproducts'>Add a Product</Link></li>
         <li><Link>My Buyers</Link></li>
     </>
 
