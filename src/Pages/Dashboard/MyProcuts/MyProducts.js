@@ -44,8 +44,8 @@ const MyProducts = () => {
                                 <td>{phone.title}</td>
                                 <td>{phone.sellPrice}$</td>
                                 <td>{phone.status}</td>
-                                <td><button className='btn btn-primary'>Advertise</button></td>
-                                <td><button className='btn btn-error'>Delete</button></td>
+                                <td><button className='btn btn-sm btn-primary'>Advertise</button></td>
+                                <td><button className='btn btn-sm btn-error'>Delete</button></td>
                             </tr>)
                         }
                     </tbody>

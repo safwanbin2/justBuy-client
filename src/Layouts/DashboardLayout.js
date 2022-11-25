@@ -10,12 +10,11 @@ const DashboardLayout = () => {
     const sellerMenu = <>
         <li><Link to='/dashboard/myproducts'>My Products</Link></li>
         <li><Link to='/dashboard/addproducts'>Add a Product</Link></li>
-        <li><Link>My Buyers</Link></li>
     </>
 
     const adminMenu = <>
-        <li><Link>All Sellers</Link></li>
-        <li><Link>All Buyers</Link></li>
+        <li><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
+        <li><Link to='/dashboard/allsellers'>All Sellers</Link></li>
         <li><Link>Reported Items</Link></li>
     </>
     return (
