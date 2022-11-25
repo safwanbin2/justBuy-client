@@ -17,7 +17,10 @@ const Navbar = () => {
     const navItmes = <>
         <li><Link to='/'>Home</Link></li>
         {
-            user ? <li><button onClick={handleLogOut}>Logout</button></li>
+            user ? <>
+                <li><button onClick={handleLogOut}>Logout</button></li>
+                <li><Link to='/dashboard'>Dashborad</Link></li>
+            </>
                 : <li><Link to='/login'>Login</Link></li>
         }
     </>

@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import Advertised from './Advertised';
 import Banner from './Banner';
 import Categories from './Categories/Categories';
+import SendMail from './SendMail/SendMail';
 
 const Home = () => {
     const { data: phones = [] } = useQuery({
@@ -17,6 +18,7 @@ const Home = () => {
             <Banner></Banner>
             <Categories></Categories>
             {phones.length && <Advertised phones={phones}></Advertised>}
+            <SendMail></SendMail>
         </div>
     );
 };
