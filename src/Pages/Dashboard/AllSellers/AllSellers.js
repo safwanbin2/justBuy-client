@@ -1,8 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const AllSellers = () => {
-    const { data: sellers = [] } = useQuery({
+
+    const [deleteId, setDeleteId] = useState(null);
+
+    const { data: sellers = [], refetch } = useQuery({
         queryKey: ['users', 'role'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/users?role=seller`)
@@ -10,7 +14,29 @@ const AllSellers = () => {
             return data;
         }
     });
-    console.log(sellers);
+
+    const { data } = useQuery({
+        queryKey: ['users', deleteId],
+        queryFn: async () => {
+            if (deleteId) {
+                const res = await fetch(`http://localhost:5000/users/${deleteId}`, {
+                    method: "DELETE",
+                    headers: {
+                        authorization: `bearer ${localStorage.getItem('justbuy-token')}`
+                    }
+                })
+                const data = await res.json()
+                console.log(data)
+                if (data.deletedCount) {
+                    toast.success('item deleted successfully')
+                    setDeleteId(null)
+                    refetch();
+                }
+                return data
+            }
+        }
+    })
+    console.log(data)
     return (
         <div className='w-full'>
             <h2 className='my-4'>All Sellers:</h2>
@@ -32,7 +58,7 @@ const AllSellers = () => {
                                 <td>{seller.name}</td>
                                 <td>{seller.email}</td>
                                 <td><button className='btn btn-sm btn-info'>Verify</button></td>
-                                <td><button className='btn btn-sm btn-error'>delete</button></td>
+                                <td><button onClick={() => setDeleteId(seller._id)} className='btn btn-sm btn-error'>delete</button></td>
                             </tr>)
                         }
                     </tbody>

@@ -7,6 +7,7 @@ import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const [advertiseId, setAdvertiseId] = useState(null);
+    const [deleteId, setDeleteId] = useState(null);
 
     const { data: phones = [], isLoading, refetch } = useQuery({
         queryKey: ['phones', user?.email],
@@ -33,7 +34,24 @@ const MyProducts = () => {
         }
     })
 
-    console.log(result)
+    const { data } = useQuery({
+        queryKey: ['phones', deleteId],
+        queryFn: async () => {
+            if (deleteId) {
+                const res = await fetch(`http://localhost:5000/phones/${deleteId}`, {
+                    method: "DELETE",
+                    headers: {
+                        authorization: `bearer ${localStorage.getItem('justbuy-token')}`
+                    }
+                })
+                const data = await res.json()
+                if (data.deletedCount) {
+                    refetch();
+                }
+                return data;
+            }
+        }
+    })
 
     if (isLoading) {
         return <Loader></Loader>
@@ -68,7 +86,7 @@ const MyProducts = () => {
                                 <td>{phone.status}</td>
                                 <td>{phone.isAdvertised ? <button className='btn btn-disabled btn-sm'>Advertise</button>
                                     : <button onClick={() => setAdvertiseId(phone._id)} className='btn btn-sm btn-primary'>Advertise</button>}</td>
-                                <td><button className='btn btn-sm btn-error'>Delete</button></td>
+                                <td><button onClick={() => setDeleteId(phone._id)} className='btn btn-sm btn-error'>Delete</button></td>
                             </tr>)
                         }
                     </tbody>

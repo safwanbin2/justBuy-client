@@ -61,7 +61,7 @@ const Login = () => {
                         </label>
                         <input {...register('email', {
                             required: "email can not be empty"
-                        })} type="email" placeholder="example@gmail.com" className="input input-bordered w-full " />
+                        })} type="email" placeholder="admin@gmail.com" className="input input-bordered w-full " />
                         {errors.email && <p className='text-red-500'><small>{errors.email.message}</small></p>}
                     </div>
                     {/* passowrd */}
@@ -73,7 +73,7 @@ const Login = () => {
                             required: "password can not be empty",
                             minLength: { value: 6, message: "password can not be less than six chars" },
                             pattern: { value: /(?=.*[0-9])/, message: "password should a least contain one number" }
-                        })} type="password" placeholder="Passwprd" className="input input-bordered w-full " />
+                        })} type="password" placeholder="admin123" className="input input-bordered w-full " />
                         {errors.password && <p className='text-red-500'><small>{errors.password.message}</small></p>}
                     </div>
                     {/* submitting form */}
