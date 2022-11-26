@@ -26,7 +26,11 @@ const router = createBrowserRouter([
             {
                 path: "/category/:category",
                 element: <PrivateRoute><Category></Category></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.category}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.category}`, {
+                    headers: {
+                        authorization: `bearer ${localStorage.getItem('justbuy-token')}`
+                    }
+                })
             },
             {
                 path: "/login",
