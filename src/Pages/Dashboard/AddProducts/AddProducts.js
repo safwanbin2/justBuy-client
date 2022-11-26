@@ -31,7 +31,7 @@ const AddProducts = () => {
                     location: data.location,
                     condition: data.condition,
                     used: data.used,
-                    postdate: postDate,
+                    postDate: postDate,
                     sellerName: user.displayName,
                     sellerEmail: user.email,
                     // isVerified: true,
