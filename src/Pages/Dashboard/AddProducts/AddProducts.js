@@ -29,6 +29,7 @@ const AddProducts = () => {
                     buyPrice: data.buyPrice,
                     img: img,
                     location: data.location,
+                    sellerPhone: data.phone,
                     condition: data.condition,
                     used: data.used,
                     postDate: postDate,
@@ -78,7 +79,7 @@ const AddProducts = () => {
                     })} type="text" placeholder="Name of phone" className="input input-bordered input-primary w-full" />
                     {errors.title && <p className='text-red-600'><small>{errors.title.message}</small></p>}
                 </div>
-                <div className='grid grid-cols-2 gap-1'>
+                <div className='grid grid-cols-3 gap-1'>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Category: </span>
@@ -92,6 +93,15 @@ const AddProducts = () => {
                             <option>oneplus</option>
                             <option>sony</option>
                         </select>
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Phone: </span>
+                        </label>
+                        <input {...register('phone', {
+                            required: "can not be empty"
+                        })} type="text" placeholder="phone" className="input input-bordered input-primary w-full" />
+                        {errors.phone && <p className='text-red-600'><small>{errors.phone.message}</small></p>}
                     </div>
                     <div className="form-control">
                         <label className="label">
