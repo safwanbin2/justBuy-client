@@ -1,9 +1,10 @@
 import React from 'react';
 import { MdVerified } from 'react-icons/md';
 import { FaLocationArrow } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const AdvertisedCard = ({ phone }) => {
-    const { img, title, category, sellPrice, buyPrice, used, postDate, sellerName, isVerified, condition, description, location } = phone;
+    const { img, title, category, sellPrice, buyPrice, used, postDate, sellerName, isVerified, condition, description, location} = phone;
     return (
         <div className="card lg:card-side grid grid-cols-2 bg-base-100 shadow-xl">
             <figure><img className='w-full h-full' src={img} alt="Album" /></figure>
@@ -18,7 +19,7 @@ const AdvertisedCard = ({ phone }) => {
                 <p className='text-sm'>Selling price: <span className='text-lg font-semibold text-primary'>{sellPrice}</span>tk</p>
                 <p>{description.length > 100 ? `${description.slice(0, 100)}...` : description}</p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">book now</button>
+                    <Link to={`/category/${category}`} className="btn btn-primary">Visit</Link>
                 </div>
             </div>
         </div>

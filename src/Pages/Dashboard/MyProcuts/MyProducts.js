@@ -22,7 +22,11 @@ const MyProducts = () => {
         queryKey: ['phones', advertiseId],
         queryFn: async () => {
             if (advertiseId) {
-                const res = await fetch(`http://localhost:5000/phones/advertise/${advertiseId}`)
+                const res = await fetch(`http://localhost:5000/phones/advertise/${advertiseId}`, {
+                    headers: {
+                        authorization: `bearer ${localStorage.getItem('justbuy-token')}`
+                    }
+                })
                 const data = await res.json()
                 if (data.acknowledged) {
                     toast.success('Advertised Successfully')

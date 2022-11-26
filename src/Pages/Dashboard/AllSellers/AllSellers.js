@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 const AllSellers = () => {
 
     const [deleteId, setDeleteId] = useState(null);
+    const [verifyId, setVerifyId] = useState(null);
 
     const { data: sellers = [], refetch } = useQuery({
         queryKey: ['users', 'role'],
@@ -36,7 +37,24 @@ const AllSellers = () => {
             }
         }
     })
-    console.log(data)
+
+    const { data: verifyResult } = useQuery({
+        queryKey: ['users', verifyId],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/users/${verifyId}`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('justbuy-token')}`
+                }
+            })
+            const data = await res.json()
+            if (data.modifiedCount) {
+                toast.success('Verified Successfully')
+                refetch();
+            }
+            return data;
+        }
+    })
+
     return (
         <div className='w-full'>
             <h2 className='my-4'>All Sellers:</h2>
@@ -57,7 +75,8 @@ const AllSellers = () => {
                                 <th>{i + 1}</th>
                                 <td>{seller.name}</td>
                                 <td>{seller.email}</td>
-                                <td><button className='btn btn-sm btn-info'>Verify</button></td>
+                                <td>{seller.isVerified ? <button className='btn btn-sm btn-disabled'>Verify</button>
+                                    : <button onClick={() => setVerifyId(seller._id)} className='btn btn-sm btn-info'>Verify</button>}</td>
                                 <td><button onClick={() => setDeleteId(seller._id)} className='btn btn-sm btn-error'>delete</button></td>
                             </tr>)
                         }
