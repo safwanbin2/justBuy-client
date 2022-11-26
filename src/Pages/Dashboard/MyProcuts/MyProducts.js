@@ -1,11 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import Loader from '../../../Components/Loader';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
-    const { data: phones = [], isLoading } = useQuery({
+    const [advertiseId, setAdvertiseId] = useState(null);
+
+    const { data: phones = [], isLoading, refetch } = useQuery({
         queryKey: ['phones', user?.email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/phones?email=${user?.email}`)
@@ -13,6 +16,25 @@ const MyProducts = () => {
             return data;
         }
     });
+
+    const { data: result = {} } = useQuery({
+        queryKey: ['phones', advertiseId],
+        queryFn: async () => {
+            if (advertiseId) {
+                const res = await fetch(`http://localhost:5000/phones/advertise/${advertiseId}`)
+                const data = await res.json()
+                if (data.acknowledged) {
+                    toast.success('Advertised Successfully')
+                    setAdvertiseId(null)
+                    refetch();
+                }
+                return data;
+            }
+        }
+    })
+
+    console.log(result)
+
     if (isLoading) {
         return <Loader></Loader>
     }
@@ -44,7 +66,8 @@ const MyProducts = () => {
                                 <td>{phone.title}</td>
                                 <td>{phone.sellPrice}$</td>
                                 <td>{phone.status}</td>
-                                <td><button className='btn btn-sm btn-primary'>Advertise</button></td>
+                                <td>{phone.isAdvertised ? <button className='btn btn-disabled btn-sm'>Advertise</button>
+                                    : <button onClick={() => setAdvertiseId(phone._id)} className='btn btn-sm btn-primary'>Advertise</button>}</td>
                                 <td><button className='btn btn-sm btn-error'>Delete</button></td>
                             </tr>)
                         }
