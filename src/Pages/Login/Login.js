@@ -22,6 +22,7 @@ const Login = () => {
             })
             .catch(err => {
                 console.error(err)
+                toast.error('could not login')
             })
     }
 
@@ -36,6 +37,7 @@ const Login = () => {
             })
             .catch(error => {
                 console.error(error)
+                toast.error('could not login')
             })
     }
 

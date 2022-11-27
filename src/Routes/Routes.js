@@ -4,7 +4,9 @@ import Main from "../Layouts/Main";
 import AddProducts from "../Pages/Dashboard/AddProducts/AddProducts";
 import AllBuyers from "../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../Pages/Dashboard/AllSellers/AllSellers";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders";
+import Payment from "../Pages/Dashboard/MyOrders/Payment";
 import MyProducts from "../Pages/Dashboard/MyProcuts/MyProducts";
 import Wishlist from "../Pages/Dashboard/Wishlist/Wishlist";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
@@ -51,6 +53,10 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
+                path: "/dashboard",
+                element: <Dashboard></Dashboard>
+            },
+            {
                 path: "/dashboard/myorders",
                 element: <MyOrders></MyOrders>
             },
@@ -73,6 +79,11 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/allsellers",
                 element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
+            },
+            {
+                path: "/dashboard/payment/:id",
+                loader: ({ params }) => fetch(`http://localhost:5000/bookings/payment/${params.id}`),
+                element: <Payment></Payment>
             }
         ]
     }
