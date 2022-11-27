@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
     const { logIn, logInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const { register, handleSubmit, formState: { errors } } = useForm();
     const handleLogIn = data => {
         logIn(data.email, data.password)
@@ -16,7 +18,7 @@ const Login = () => {
                 console.log(user)
                 getJWTtoken(user.email);
                 toast.success('Logged in successfully')
-                navigate('/')
+                navigate(from, {replace: true})
             })
             .catch(err => {
                 console.error(err)
@@ -30,7 +32,7 @@ const Login = () => {
                 console.log(user)
                 getJWTtoken(user.email)
                 toast.success('Logged in successfully')
-                navigate('/')
+                navigate(from, {replace: true})
             })
             .catch(error => {
                 console.error(error)

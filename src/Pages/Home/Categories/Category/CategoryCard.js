@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { FaLocationArrow, FaSmile } from 'react-icons/fa';
 import { MdBookmarkAdd, MdVerified } from 'react-icons/md';
 import { AuthContext } from '../../../../Contexts/AuthProvider/AuthProvider';
@@ -27,6 +28,12 @@ const CategoryCard = ({ phone }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                if (data.acknowledged) {
+                    toast.success('Item Added to wish List.')
+                }
+                else{
+                    toast.error(data.message)
+                }
             })
     }
 
