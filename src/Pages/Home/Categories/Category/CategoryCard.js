@@ -4,6 +4,7 @@ import { FaLocationArrow, FaSmile } from 'react-icons/fa';
 import { MdBookmarkAdd, MdVerified } from 'react-icons/md';
 import { AuthContext } from '../../../../Contexts/AuthProvider/AuthProvider';
 import CategoryCardModal from './CategoryCardModal';
+import './CategoryCard.css';
 
 const CategoryCard = ({ phone }) => {
     const { user } = useContext(AuthContext);
@@ -39,9 +40,9 @@ const CategoryCard = ({ phone }) => {
 
     return (
         <>
-            <div style={{ gridTemplateColumns: "1fr 2fr" }} className="card lg:card-side grid bg-base-100 shadow-xl my-5">
+            <div className="card lg:card-side grid bg-base-100 shadow-xl my-5 parent">
                 <figure><img className='w-full h-[300px]' src={img} alt="Album" /></figure>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }} className="card-body relative">
+                <div className="card-body relative grid grid-cols-1 lg:grid-cols-2">
                     <div>
                         <h2 className="card-title">{title} <span className='text-sm'>({condition})</span></h2>
                         <h3 className='flex items-center'>{sellerName} <span className='text-blue-600 ml-2'>{isVerified && <MdVerified />}</span> </h3>
@@ -54,7 +55,7 @@ const CategoryCard = ({ phone }) => {
                     </div>
                     <div className="divider divider-horizontal absolute h-full right-[50%]"> <p className='text-2xl text-yellow-600'><FaSmile></FaSmile></p> </div>
                     <div>
-                        <p>{description}</p>
+                        <p className='mb-10'>{description}</p>
                         <div className="card-actions justify-end absolute right-6 bottom-6">
                             <button onClick={() => handleAddToWishList(phone)} className='btn btn-primary btn-sm' title='Wishlist'> <MdBookmarkAdd></MdBookmarkAdd> </button>
                             {/* The button to open modal */}

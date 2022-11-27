@@ -31,6 +31,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                saveUser(user.displayName, user.email);
                 getJWTtoken(user.email)
                 toast.success('Logged in successfully')
                 navigate(from, {replace: true})
@@ -38,6 +39,26 @@ const Login = () => {
             .catch(error => {
                 console.error(error)
                 toast.error('could not login')
+            })
+    }
+
+    const saveUser = (name, email, role = 'buyer') => {
+        const userData = {
+            name,
+            email,
+            role
+        }
+        fetch('http://localhost:5000/users', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(userData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                navigate('/')
             })
     }
 

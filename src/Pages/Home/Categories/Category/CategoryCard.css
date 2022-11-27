@@ -1,0 +1,12 @@
+.parent{
+    grid-template-columns: 1fr 2fr;
+}
+
+@media screen and (max-width: 880px) {
+    .parent{
+        grid-template-columns: 1fr;
+    }
+    .divider{
+        display: none;
+    }
+}

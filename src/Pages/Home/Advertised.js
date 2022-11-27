@@ -5,7 +5,7 @@ const Advertised = ({ phones }) => {
     return (
         <div className='my-10'>
             <h2 className='text-2xl font-semibold'>Advertised Items : </h2>
-            <div className='grid grid-cols-2 gap-4 my-10'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 my-10'>
                 {
                     phones.map((phone, i) => <AdvertisedCard
                         key={i}

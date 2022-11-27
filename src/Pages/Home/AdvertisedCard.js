@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const AdvertisedCard = ({ phone }) => {
     const { img, title, category, sellPrice, buyPrice, used, postDate, sellerName, isVerified, condition, description, location} = phone;
     return (
-        <div className="card lg:card-side grid grid-cols-2 bg-base-100 shadow-xl">
+        <div className="card lg:card-side grid grid-cols-1 md:grid-cols-2 bg-base-100 shadow-xl">
             <figure><img className='w-full h-full' src={img} alt="Album" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{title} <span className='text-sm'>({condition})</span></h2>
