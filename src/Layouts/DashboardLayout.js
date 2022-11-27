@@ -17,6 +17,7 @@ const DashboardLayout = () => {
 
     const buyerMenu = <>
         <li><Link to='/dashboard/myorders'>My Orders</Link></li>
+        <li><Link to='/dashboard/wishlist'>Wishlist</Link></li>
     </>
 
     const sellerMenu = <>
@@ -27,7 +28,6 @@ const DashboardLayout = () => {
     const adminMenu = <>
         <li><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
         <li><Link to='/dashboard/allsellers'>All Sellers</Link></li>
-        <li><Link>Reported Items</Link></li>
     </>
     return (
         <div>

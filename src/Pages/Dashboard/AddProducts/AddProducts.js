@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import useVerified from '../../../Hooks/useVerified';
 
 const AddProducts = () => {
     const { user } = useContext(AuthContext);
@@ -10,6 +11,9 @@ const AddProducts = () => {
     const d = new Date();
     const postDate = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`
     const navigate = useNavigate();
+
+    const [isVerified] = useVerified(user?.email);
+    console.log(isVerified)
 
     const handleAddPhone = data => {
         const image = data.img[0];
@@ -35,7 +39,7 @@ const AddProducts = () => {
                     postDate: postDate,
                     sellerName: user.displayName,
                     sellerEmail: user.email,
-                    // isVerified: true,
+                    isVerified: isVerified,
                     description: data.description,
                     status: 'available'
                 }
