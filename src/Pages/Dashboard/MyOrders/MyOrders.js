@@ -42,7 +42,10 @@ const MyOrders = () => {
                                 </div>
                                 <td>{order.title}</td>
                                 <td>{order.sellPrice}tk</td>
-                                <td><Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-sm btn-primary'>Pay</button></Link></td>
+                                <td>
+                                    {order.sellPrice && !order.paid ? <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-sm btn-primary'>Pay</button></Link> 
+                                    : <button className='btn btn-disabled btn-sm'>Paid</button>}
+                                </td>
                             </tr>)
                         }
                     </tbody>

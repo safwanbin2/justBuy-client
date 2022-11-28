@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const Wishlist = () => {
@@ -11,7 +12,7 @@ const Wishlist = () => {
                 setPhones(data.data);
             })
     }, [user?.email])
-    console.log(phones)
+    console.log(phones._id)
     return (
         <div className='w-full'>
             <h2 className='my-4'>My Wishlist:</h2>
@@ -37,7 +38,10 @@ const Wishlist = () => {
                                 </div>
                                 <td>{phone.title}</td>
                                 <td>{phone.sellPrice}$</td>
-                                <td><button className='btn btn-sm btn-primary'>Pay</button></td>
+                                <td>
+                                    {phone.sellPrice && !phone.paid ? <Link to={`/dashboard/payment/${phone._id}`}><button className='btn btn-sm btn-primary'>Pay</button></Link> 
+                                    : <button className='btn btn-disabled btn-sm'>Paid</button>}
+                                </td>
                             </tr>)
                         }
                     </tbody>

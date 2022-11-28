@@ -88,9 +88,14 @@ const MyProducts = () => {
                                 </div>
                                 <td>{phone.title}</td>
                                 <td>{phone.sellPrice}$</td>
-                                <td>{phone.status}</td>
-                                <td>{phone.isAdvertised ? <button className='btn btn-disabled btn-sm'>Advertise</button>
-                                    : <button onClick={() => setAdvertiseId(phone._id)} className='btn btn-sm btn-primary'>Advertise</button>}</td>
+                                <td>{phone.paid ? <p>paid</p> : <p>available</p>}</td>
+                                <td>{
+                                    phone.paid ? <button className='btn btn-disabled btn-small'>unavailable</button> :
+                                        <>{
+                                            phone.isAdvertised ? <button className='btn btn-disabled btn-sm'>Advertised</button>
+                                                : <button onClick={() => setAdvertiseId(phone._id)} className='btn btn-sm btn-primary'>Advertise</button>
+                                        }</>
+                                }</td>
                                 <td><button onClick={() => setDeleteId(phone._id)} className='btn btn-sm btn-error'>Delete</button></td>
                             </tr>)
                         }

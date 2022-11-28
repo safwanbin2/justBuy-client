@@ -41,7 +41,8 @@ const AddProducts = () => {
                     sellerEmail: user.email,
                     isVerified: isVerified,
                     description: data.description,
-                    status: 'available'
+                    status: 'available',
+                    paid: false
                 }
 
                 fetch(`http://localhost:5000/phones`, {
@@ -91,7 +92,7 @@ const AddProducts = () => {
                         <select {...register('category')} className="select select-primary w-full">
                             <option>iphone</option>
                             <option>samsung</option>
-                            <option>opp</option>
+                            <option>oppo</option>
                             <option>vivo</option>
                             <option>redmi</option>
                             <option>oneplus</option>

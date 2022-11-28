@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../../../Contexts/AuthProvider/AuthProvider';
 
 const CategoryCardModal = ({ phone, setBookingPhone }) => {
-    const { title, sellPrice, category, sellerEmail, img } = phone;
+    const { title, sellPrice, category, sellerEmail, img, _id } = phone;
     const { user } = useContext(AuthContext);
 
     const handleSubmit = e => {
@@ -19,7 +19,8 @@ const CategoryCardModal = ({ phone, setBookingPhone }) => {
             category,
             buyerPhone,
             buyerLocation,
-            buyerEmail: user.email
+            buyerEmail: user.email,
+            productId: _id
         }
 
         fetch('http://localhost:5000/bookings', {
