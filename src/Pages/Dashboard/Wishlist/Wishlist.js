@@ -36,7 +36,7 @@ const Wishlist = () => {
                                     </div>
                                 </div>
                                 <td>{phone.title}</td>
-                                <td>{phone.sellPrice}$</td>
+                                <td>{phone.sellPrice}tk</td>
                                 <td>
                                     {phone.sellPrice && !phone.paid ? <Link to={`/dashboard/payment/${phone._id}`}><button className='btn btn-sm btn-primary'>Pay</button></Link> 
                                     : <button className='btn btn-disabled btn-sm'>Paid</button>}
