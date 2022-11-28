@@ -13,8 +13,7 @@ const AddProducts = () => {
     const navigate = useNavigate();
 
     const [isVerified] = useVerified(user?.email);
-    console.log(isVerified)
-
+    
     const handleAddPhone = data => {
         const image = data.img[0];
         const formData = new FormData();
@@ -45,7 +44,7 @@ const AddProducts = () => {
                     paid: false
                 }
 
-                fetch(`http://localhost:5000/phones`, {
+                fetch(`https://just-buy-server.vercel.app/phones`, {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",
@@ -55,7 +54,6 @@ const AddProducts = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
                         navigate('/dashboard/myproducts')
                         toast.success('Added successfully')
                     })

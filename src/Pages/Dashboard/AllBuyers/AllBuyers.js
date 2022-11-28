@@ -9,7 +9,7 @@ const AllBuyers = () => {
     const { data: buyers = [], refetch } = useQuery({
         queryKey: ['users', 'role'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users?role=buyer`)
+            const res = await fetch(`https://just-buy-server.vercel.app/users?role=buyer`)
             const data = await res.json();
             return data;
         }
@@ -19,14 +19,13 @@ const AllBuyers = () => {
         queryKey: ['users', deleteId],
         queryFn: async () => {
             if (deleteId) {
-                const res = await fetch(`http://localhost:5000/users/${deleteId}`, {
+                const res = await fetch(`https://just-buy-server.vercel.app/users/${deleteId}`, {
                     method: "DELETE",
                     headers: {
                         authorization: `bearer ${localStorage.getItem('justbuy-token')}`
                     }
                 })
                 const data = await res.json()
-                console.log(data)
                 if (data.deletedCount) {
                     toast.success('item deleted successfully')
                     setDeleteId(null)

@@ -14,7 +14,6 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 updateUser(data.name)
-                console.log(user)
             })
             .catch(error => {
                 console.log(error)
@@ -40,7 +39,6 @@ const SignUp = () => {
                 const user = result.user;
                 saveUser(user.displayName, user.email);
                 getJWTtoken(user.email)
-                console.log(user)
             })
             .catch(error => {
                 console.error(error)
@@ -53,7 +51,7 @@ const SignUp = () => {
             email,
             role
         }
-        fetch('http://localhost:5000/users', {
+        fetch('https://just-buy-server.vercel.app/users', {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -62,7 +60,6 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 navigate('/')
             })
     }
@@ -70,10 +67,9 @@ const SignUp = () => {
     // get jwt token
     const getJWTtoken = email => {
         if (email) {
-            fetch(`http://localhost:5000/jwt?email=${email}`)
+            fetch(`https://just-buy-server.vercel.app/jwt?email=${email}`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data.token)
                     localStorage.setItem('justbuy-token', data.token)
                 })
         }

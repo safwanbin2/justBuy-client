@@ -15,7 +15,6 @@ const Login = () => {
         logIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
                 getJWTtoken(user.email);
                 toast.success('Logged in successfully')
                 navigate(from, {replace: true})
@@ -30,7 +29,6 @@ const Login = () => {
         logInWithGoogle()
             .then(result => {
                 const user = result.user;
-                console.log(user)
                 saveUser(user.displayName, user.email);
                 getJWTtoken(user.email)
                 toast.success('Logged in successfully')
@@ -48,7 +46,7 @@ const Login = () => {
             email,
             role
         }
-        fetch('http://localhost:5000/users', {
+        fetch('https://just-buy-server.vercel.app/users', {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -57,7 +55,6 @@ const Login = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 navigate('/')
             })
     }
@@ -65,10 +62,9 @@ const Login = () => {
     // get jwt token
     const getJWTtoken = email => {
         if (email) {
-            fetch(`http://localhost:5000/jwt?email=${email}`)
+            fetch(`https://just-buy-server.vercel.app/jwt?email=${email}`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data.token)
                     localStorage.setItem('justbuy-token', data.token)
                 })
         }

@@ -12,7 +12,7 @@ const MyProducts = () => {
     const { data: phones = [], isLoading, refetch } = useQuery({
         queryKey: ['phones', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/phones?email=${user?.email}`)
+            const res = await fetch(`https://just-buy-server.vercel.app/phones?email=${user?.email}`)
             const data = await res.json();
             return data;
         }
@@ -22,7 +22,7 @@ const MyProducts = () => {
         queryKey: ['phones', advertiseId],
         queryFn: async () => {
             if (advertiseId) {
-                const res = await fetch(`http://localhost:5000/phones/advertise/${advertiseId}`, {
+                const res = await fetch(`https://just-buy-server.vercel.app/phones/advertise/${advertiseId}`, {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('justbuy-token')}`
                     }
@@ -42,7 +42,7 @@ const MyProducts = () => {
         queryKey: ['phones', deleteId],
         queryFn: async () => {
             if (deleteId) {
-                const res = await fetch(`http://localhost:5000/phones/${deleteId}`, {
+                const res = await fetch(`https://just-buy-server.vercel.app/phones/${deleteId}`, {
                     method: "DELETE",
                     headers: {
                         authorization: `bearer ${localStorage.getItem('justbuy-token')}`

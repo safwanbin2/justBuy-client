@@ -32,7 +32,7 @@ const router = createBrowserRouter([
             {
                 path: "/category/:category",
                 element: <PrivateRoute><Category></Category></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.category}`, {
+                loader: ({ params }) => fetch(`https://just-buy-server.vercel.app/categories/${params.category}`, {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('justbuy-token')}`
                     }
@@ -87,7 +87,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/payment/:id",
-                loader: ({ params }) => fetch(`http://localhost:5000/bookings/payment/${params.id}`),
+                loader: ({ params }) => fetch(`https://just-buy-server.vercel.app/bookings/payment/${params.id}`),
                 element: <Payment></Payment>
             }
         ]

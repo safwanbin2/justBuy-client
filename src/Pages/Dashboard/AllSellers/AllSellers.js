@@ -10,7 +10,7 @@ const AllSellers = () => {
     const { data: sellers = [], refetch } = useQuery({
         queryKey: ['users', 'role'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users?role=seller`)
+            const res = await fetch(`https://just-buy-server.vercel.app/users?role=seller`)
             const data = await res.json();
             return data;
         }
@@ -20,14 +20,13 @@ const AllSellers = () => {
         queryKey: ['users', deleteId],
         queryFn: async () => {
             if (deleteId) {
-                const res = await fetch(`http://localhost:5000/users/${deleteId}`, {
+                const res = await fetch(`https://just-buy-server.vercel.app/users/${deleteId}`, {
                     method: "DELETE",
                     headers: {
                         authorization: `bearer ${localStorage.getItem('justbuy-token')}`
                     }
                 })
                 const data = await res.json()
-                console.log(data)
                 if (data.deletedCount) {
                     toast.success('item deleted successfully')
                     setDeleteId(null)
@@ -41,7 +40,7 @@ const AllSellers = () => {
     const { data: verifyResult } = useQuery({
         queryKey: ['users', verifyId],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/${verifyId}`, {
+            const res = await fetch(`https://just-buy-server.vercel.app/users/${verifyId}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('justbuy-token')}`
                 }

@@ -19,7 +19,7 @@ const CategoryCard = ({ phone }) => {
             buyerEmail: user.email,
             img: phone.img
         }
-        fetch('http://localhost:5000/wishlist', {
+        fetch('https://just-buy-server.vercel.app/wishlist', {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -28,7 +28,6 @@ const CategoryCard = ({ phone }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.acknowledged) {
                     toast.success('Item Added to wish List.')
                 }

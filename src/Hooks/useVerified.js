@@ -4,10 +4,9 @@ const useVerified = email => {
     const [isVerified, setIsVerified] = useState(false);
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/seller/isverified?email=${email}`)
+            fetch(`https://just-buy-server.vercel.app/users/seller/isverified?email=${email}`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     setIsVerified(data.isVerified)
                 })
         }

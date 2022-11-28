@@ -4,7 +4,6 @@ import CategoryCard from './CategoryCard';
 
 const Category = () => {
     const phones = useLoaderData();
-    console.log(phones)
     return (
         <div className='w-11/12 mx-auto my-10'>
             <h2 className='text-2xl font-semibold'>results for: {phones[0].category}</h2>

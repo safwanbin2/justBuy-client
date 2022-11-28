@@ -23,7 +23,7 @@ const CategoryCardModal = ({ phone, setBookingPhone }) => {
             productId: _id
         }
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://just-buy-server.vercel.app/bookings', {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -32,7 +32,6 @@ const CategoryCardModal = ({ phone, setBookingPhone }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 toast.success('Items booked successfully')
                 setBookingPhone(null)
             })

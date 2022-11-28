@@ -7,12 +7,11 @@ const Wishlist = () => {
     const { user } = useContext(AuthContext);
     const [phones, setPhones] = useState([]);
     useEffect(() => {
-        axios.get(`http://localhost:5000/wishlist?email=${user?.email}`)
+        axios.get(`https://just-buy-server.vercel.app/wishlist?email=${user?.email}`)
             .then(data => {
                 setPhones(data.data);
             })
     }, [user?.email])
-    console.log(phones._id)
     return (
         <div className='w-full'>
             <h2 className='my-4'>My Wishlist:</h2>
