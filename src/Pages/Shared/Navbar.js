@@ -26,7 +26,7 @@ const Navbar = () => {
         <li><Link to='/blog' className="block lg:hidden">BLog</Link></li>
     </>
     return (
-        <div className="navbar bg-base-100 md:px-10 shadow-md">
+        <div className="navbar bg-base-100 md:px-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -38,7 +38,7 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-xl">justBuy</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-2xl text-blue-400 font-semibold tracking-wider">justBuy</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
