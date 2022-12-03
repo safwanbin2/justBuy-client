@@ -8,7 +8,7 @@ const Payment = () => {
     const phone = useLoaderData();
     const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
     return (
-        <div>
+        <div className='p-5'>
             <h2 className='text-xl font-semibold'>Payment for {phone.title}: </h2>
             <p>Amount <span className='text-xl font-semibold text-black'>{phone.sellPrice}</span> $</p>
             <div className='w-96 my-10'>

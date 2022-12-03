@@ -32,7 +32,7 @@ const SendMail = () => {
                     <label for="message" className="text-sm">Message</label>
                     <textarea id="message" rows="3" className="w-full p-3 rounded dark:bg-gray-700" spellcheck="false"></textarea>
                 </div>
-                <button type="submit" className="w-full p-3 text-sm font-bold tracking-wide uppercase rounded dark:bg-blue-400 dark:text-gray-900">Send Message</button>
+                <button type="submit" disabled className=" w-full p-3 text-sm font-bold tracking-wide uppercase rounded dark:bg-blue-400 dark:text-gray-900">Send Message</button>
             </form>
         </div>
     );

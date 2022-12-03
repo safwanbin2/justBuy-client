@@ -5,7 +5,7 @@ import Loader from '../Components/Loader';
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 import useAdmin from '../Hooks/useAdmin';
 import useSeller from '../Hooks/useSeller';
-import Navbar from '../Pages/Shared/Navbar';
+// import Navbar from '../Pages/Shared/Navbar';
 
 const DashboardLayout = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -118,7 +118,7 @@ toast.success('Logged out successfully')
         // </div>
 
 
-        <section className='flex'>
+        <section className='grid' style={{gridTemplateColumns: "2fr 10fr"}}>
             <div className="flex flex-col min-h-screen p-3 w-60 dark:bg-gray-900 dark:text-gray-100">
                 <div className="space-y-3">
                     <div className="flex items-center justify-between">
